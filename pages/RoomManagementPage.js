@@ -2,7 +2,8 @@ class RoomManagementPage {
 
     get sidebarToggle()     { return $('div.p-4.flex.items-center button'); }
     get roomMgmtLink()      { return $('a[href="/rooms"]'); }
-    get newRoomBtn()        { return $('[data-testid="rooms-create-button"]'); }
+    // BUG 3: Wrong data-testid - 'room-create-button' instead of 'rooms-create-button'
+    get newRoomBtn()        { return $('[data-testid="room-create-button"]'); }
     get roomNameInput()     { return $('[data-testid="room-form-name-input"]'); }
     get roomDescInput()     { return $('[data-testid="room-form-description-input"]'); }
     get createBtn()         { return $('[data-testid="room-form-submit-button"]'); }

@@ -5,32 +5,24 @@ class LoginPage {
     get loginBtn()      { return $('[data-testid="verify-otp-submit"]'); }
 
     otpBox(index) {
-        return $(`[data-testid="verify-otp-input-${index}"]`);
+        // BUG 1: Wrong data-testid prefix - 'otp-input' instead of 'verify-otp-input'
+        return $(`[data-testid="otp-input-${index}"]`);
     }
 
     async open() {
-        // Cookies clear karo so fresh login mile darak scenario ma
         await browser.deleteCookies();
         await browser.url('https://stagingreserve.magrabi.com/login');
-
-        // Page fully load thay te wait karo
-        await browser.waitUntil(
-            async () => (await browser.getUrl()).includes('/login'),
-            { timeout: 15000, timeoutMsg: 'Login page load nahi thyu' }
-        );
-
-        // Email field visible thay te wait karo
         await this.emailInput.waitForDisplayed({ timeout: 30000 });
     }
 
     async enterEmail() {
         await this.emailInput.waitForDisplayed({ timeout: 20000 });
-        await this.emailInput.setValue('jatin.ravaliya@kombee.com');
+        // BUG 2: Wrong email address
+        await this.emailInput.setValue('test.user@gmail.com');
 
         await this.sendOtpBtn.waitForClickable({ timeout: 10000 });
         await this.sendOtpBtn.click();
 
-        // OTP screen aave te wait karo
         await this.otpBox(0).waitForDisplayed({ timeout: 30000 });
     }
 
@@ -46,8 +38,6 @@ class LoginPage {
 
         await this.loginBtn.waitForClickable({ timeout: 10000 });
         await this.loginBtn.click();
-
-        // Dashboard load thay te wait karo
         await browser.pause(3000);
     }
 }
