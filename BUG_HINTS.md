@@ -27,7 +27,7 @@
 
 4. Find and fix **3 bugs** in the page object files
 
-5. Run tests again — **all should pass**
+5. Run tests again — **all scenarios should pass**
    ```bash
    npm test
    ```
@@ -39,21 +39,21 @@
 ### Bug 1 — Easy
 - **File:** `pages/LoginPage.js`
 - **Method:** `otpBox(index)`
-- **Hint:** OTP input field no `data-testid` attribute wrong chhe
+- **Hint:** The `data-testid` attribute used to locate the OTP input field is incorrect
 
 ---
 
 ### Bug 2 — Medium
 - **File:** `pages/LoginPage.js`
 - **Method:** `enterEmail()`
-- **Hint:** Login karvani email address wrong set chhi chhe
+- **Hint:** The email address used to log in is incorrect
 
 ---
 
 ### Bug 3 — Hard
 - **File:** `pages/RoomManagementPage.js`
 - **Locator:** `newRoomBtn`
-- **Hint:** "New Room" button no `data-testid` selector wrong chhe
+- **Hint:** The `data-testid` selector used to locate the "New Room" button is incorrect
 
 ---
 
@@ -86,15 +86,23 @@ Room Management
 ```
 magrabi-interview-task/
 ├── features/
-│   └── RoomManagement.feature   ← BDD scenarios
+│   └── RoomManagement.feature     ← BDD test scenarios
 ├── pages/
-│   ├── LoginPage.js             ← 🐛 Bug 1, Bug 2 yahan chhe
-│   └── RoomManagementPage.js    ← 🐛 Bug 3 yahan chhe
+│   ├── LoginPage.js               ← 🐛 Bug 1 and Bug 2 are here
+│   └── RoomManagementPage.js      ← 🐛 Bug 3 is here
 ├── steps/
-│   └── RoomManagementSteps.js   ← Step definitions
-├── wdio.conf.js                 ← WebdriverIO config
+│   └── RoomManagementSteps.js     ← Step definitions (no changes needed)
+├── wdio.conf.js                   ← WebdriverIO configuration
 └── package.json
 ```
+
+---
+
+## 💡 Tips
+
+- Inspect the actual HTML elements on the login page to find the correct `data-testid` values
+- Use browser DevTools to verify the correct attribute values
+- Do not modify the `features/` or `steps/` files — only fix the `pages/` files
 
 ---
 
