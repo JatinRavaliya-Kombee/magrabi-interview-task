@@ -1,0 +1,18 @@
+{
+  "name": "magrabi-candidate-task",
+  "version": "1.0.0",
+  "description": "Magrabi Room Management - Interview Task",
+  "type": "module",
+  "scripts": {
+    "test": "wdio run wdio.conf.js",
+    "test:scenario1": "wdio run wdio.conf.js --cucumberOpts.tagExpression @Scenario1",
+    "test:scenario2": "wdio run wdio.conf.js --cucumberOpts.tagExpression @Scenario2"
+  },
+  "devDependencies": {
+    "@wdio/cli": "9.15.0",
+    "@wdio/cucumber-framework": "9.15.0",
+    "@wdio/local-runner": "9.15.0",
+    "@wdio/spec-reporter": "9.15.0",
+    "chromedriver": "latest"
+  }
+}
